@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Breast Cancer Prediction System</title>
+
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: linear-gradient(120deg, #fdfbfb, #ebedee);
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 520px;
+            padding: 30px;
+            border-radius: 14px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .header h1 {
+            margin: 0;
+            color: #2c3e50;
+        }
+
+        .header p {
+            margin-top: 8px;
+            color: #7f8c8d;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #34495e;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 14px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 16px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #3498db, #6dd5fa);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .result {
+            margin-top: 25px;
+            padding: 18px;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .benign {
+            background-color: #eafaf1;
+            color: #27ae60;
+        }
+
+        .malignant {
+            background-color: #fdecea;
+            color: #c0392b;
+        }
+
+        .disclaimer {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #7f8c8d;
+            text-align: center;
+            line-height: 1.5;
+        }
+
+        .footer {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            color: #95a5a6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <div class="header">
+        <h1>Breast Cancer Predictor</h1>
+        <p>AI-based classification (Educational Use Only)</p>
+    </div>
+
+    <form method="POST">
+
+        <label>Radius Mean</label>
+        <input type="number" step="any" name="radius_mean" required>
+
+        <label>Texture Mean</label>
+        <input type="number" step="any" name="texture_mean" required>
+
+        <label>Perimeter Mean</label>
+        <input type="number" step="any" name="perimeter_mean" required>
+
+        <label>Area Mean</label>
+        <input type="number" step="any" name="area_mean" required>
+
+        <label>Concavity Mean</label>
+        <input type="number" step="any" name="concavity_mean" required>
+
+        <button type="submit">Predict Tumor Type</button>
+
+    </form>
+
+    {% if prediction %}
+        <div class="result {{ 'malignant' if prediction == 'Malignant' else 'benign' }}">
+            Prediction Result: {{ prediction }}
+        </div>
+    {% endif %}
+
+    <div class="disclaimer">
+        ⚠️ This system is developed strictly for educational purposes.  
+        It must NOT be used as a medical diagnostic or decision-making tool.
+    </div>
+
+    <div class="footer">
+        Powered by Machine Learning & Flask
+    </div>
+
+</div>
+
+</body>
+</html>
